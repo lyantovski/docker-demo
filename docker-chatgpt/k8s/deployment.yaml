@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: chatgpt-deployment
+  namespace: chatgpt
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: chatgpt
+  template:
+    metadata:
+      labels:
+        app: chatgpt
+    spec:
+      containers:
+      - name: chatgpt
+        image: lyacrpoc.azurecr.io/openai-k8s:1.0.0
+        ports:
+        - containerPort: 8080
+        resources:
+          limits:
+            memory: 2Gi
+            cpu: 1000m
+          requests:
+            memory: 1Gi
+            cpu: 500m
