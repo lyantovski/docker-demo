@@ -18,6 +18,10 @@ docker run -d -p 5000:5000 -e GEMINI_API_KEY="<your-gemini-api-key>" acrliorsc.a
 
 Open **http://localhost:5000** in your browser.
 
+## Example
+
+![Gemini AI Chat Screenshot](images/screenshot.png)
+
 Push the image to your container registry:
 
 ```bash
