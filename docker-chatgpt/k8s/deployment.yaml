@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: chatgpt-deployment
-  namespace: chatgpt
+  namespace: gemini-chat-new
 spec:
   replicas: 1
   selector:

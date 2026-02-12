@@ -39,10 +39,26 @@ kubectl apply -f k8s/
 ```
 
 This creates:
-- A `chatgpt` namespace
+- A `gemini-chat-new` namespace
 - A Secret with your `GEMINI_API_KEY`
 - A Deployment running the app on port 5000
 - A Service exposing the app on port 80
+
+## Use Helm
+
+1. Edit `helm/values.yaml` and set `geminiApiKey` to your actual Gemini API key.
+2. Create the namespace and install the chart:
+
+```bash
+kubectl create ns gemini-chat-new
+helm install gemini-chat . -n gemini-chat-new
+```
+
+To uninstall:
+
+```bash
+helm delete gemini-chat -n gemini-chat-new
+```
 
 
 
