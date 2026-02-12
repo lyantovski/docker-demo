@@ -1,6 +1,6 @@
-FROM python:3.8-slim-buster
+FROM python:3.11-slim
 
-ENV MODEL_ENGINE "text-davinci-002"
+ENV MODEL_ENGINE="gemini-2.0-flash"
 
 COPY requirements.txt .
 
@@ -8,6 +8,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 COPY gpt3_script.py /app/
+
+EXPOSE 5000
 
 CMD ["python", "-E", "/app/gpt3_script.py"]
 

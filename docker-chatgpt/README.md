@@ -1,29 +1,44 @@
-# Docker for ChatGPT
+# Gemini AI Chat (Docker + Kubernetes)
 
-Reference: 
-https://collabnix.com/running-chatgpt-locally-on-kubernetes-cluster-using-docker-desktop/
+A simple web-based chat application powered by Google Gemini, running on Flask and containerized with Docker.
 
+## Prerequisites
+
+- [Docker Desktop](https://www.docker.com/products/docker-desktop/) installed
+- A [Gemini API key](https://aistudio.google.com/apikey)
 
 ## Getting Started
 
-If you wish to run the tutorial, you can use the following command after installing Docker Desktop (for example):
+Build and run locally with Docker:
 
 ```bash
-docker build -t lyacrpoc.azurecr.io/openaii-k8s:1.0.0 .
-docker run -d -p 8080:8080 lyacrpoc.azurecr.io/openai-k8s:1.0.0
-docker push lyacrpoc.azurecr.io/openaii-k8s:1.0.0
+docker build -t acrliorsc.azurecr.io/openai-k8s:1.0.0 .
+docker run -d -p 5000:5000 -e GEMINI_API_KEY="<your-gemini-api-key>" acrliorsc.azurecr.io/openai-k8s:1.0.0
 ```
 
+Open **http://localhost:5000** in your browser.
+
+Push the image to your container registry:
+
+```bash
+docker push acrliorsc.azurecr.io/openai-k8s:1.0.0
+```
 
 ## Use Kubernetes
 
-If you wish to run the docker image on Kubernetes, you can use following commands:
-
-Edit in k8s/deployment.yaml image name with your image created before.
+1. Edit `k8s/secret.yaml` and replace `REPLACE_WITH_YOUR_GEMINI_API_KEY` with your actual Gemini API key.
+2. (Optional) Edit `k8s/deployment.yaml` to update the image name if needed.
+3. Apply the manifests:
 
 ```bash
-   kubectl apply -f k8s/
+kubectl apply -f k8s/
 ```
+
+This creates:
+- A `chatgpt` namespace
+- A Secret with your `GEMINI_API_KEY`
+- A Deployment running the app on port 5000
+- A Service exposing the app on port 80
 
 
 

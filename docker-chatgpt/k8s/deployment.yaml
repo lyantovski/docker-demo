@@ -15,9 +15,15 @@ spec:
     spec:
       containers:
       - name: chatgpt
-        image: lyacrpoc.azurecr.io/openai-k8s:1.0.0
+        image: acrliorsc.azurecr.io/openai-k8s:1.0.0
         ports:
-        - containerPort: 8080
+        - containerPort: 5000
+        env:
+        - name: GEMINI_API_KEY
+          valueFrom:
+            secretKeyRef:
+              name: gemini-api-secret
+              key: GEMINI_API_KEY
         resources:
           limits:
             memory: 2Gi
