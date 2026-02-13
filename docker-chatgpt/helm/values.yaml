@@ -21,7 +21,7 @@ resources:
     cpu: 500m
     memory: 1Gi
 
-geminiApiKey: "AIzaSyD6iXxdH8adW_Ga8KOtHHbvcVaAEUZqJS8"
+geminiApiKey: "YOUR-GEMINI-API-KEY"
 
 namespace: gemini-chat-new
 
